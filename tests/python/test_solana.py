@@ -4,12 +4,12 @@ from ragger.utils import RAPDU
 from .apps.solana import SolanaClient, ErrorType
 from .apps.solana_cmd_builder import SystemInstructionTransfer, Message, verify_signature, OffchainMessage
 from .apps.solana_utils import FOREIGN_PUBLIC_KEY, FOREIGN_PUBLIC_KEY_2, AMOUNT, AMOUNT_2, SOL_PACKED_DERIVATION_PATH, SOL_PACKED_DERIVATION_PATH_2, ROOT_SCREENSHOT_PATH
-from .apps.solana_utils import enable_blind_signing, enable_short_public_key, enable_expert_mode
+from .apps.solana_utils import enable_blind_signing, enable_expert_mode
 
 
 class TestGetPublicKey:
 
-    def test_solana_get_public_key_ok(self, backend, scenario_navigator, navigator, test_name):
+    def test_solana_get_public_key_ok(self, backend, scenario_navigator):
         sol = SolanaClient(backend)
         from_public_key = sol.get_public_key(SOL_PACKED_DERIVATION_PATH)
 
@@ -19,7 +19,7 @@ class TestGetPublicKey:
         assert sol.get_async_response().data == from_public_key
 
 
-    def test_solana_get_public_key_refused(self, backend, scenario_navigator, test_name):
+    def test_solana_get_public_key_refused(self, backend, scenario_navigator):
         sol = SolanaClient(backend)
         with sol.send_public_key_with_confirm(SOL_PACKED_DERIVATION_PATH):
             backend.raise_policy = RaisePolicy.RAISE_NOTHING

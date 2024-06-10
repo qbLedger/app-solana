@@ -91,17 +91,14 @@ DISABLE_STANDARD_APP_FILES = 1
 # Allow usage of function from lib_standard_app/crypto_helpers.c
 APP_SOURCE_FILES += ${BOLOS_SDK}/lib_standard_app/crypto_helpers.c
 
-
-DEFINES += UNUSED\(x\)=\(void\)x
-
-WITH_U2F=0
+WITH_U2F?=0
 ifneq ($(WITH_U2F),0)
     DEFINES         += HAVE_U2F HAVE_IO_U2F
     DEFINES         += U2F_PROXY_MAGIC=\"~SOL\"
 		SDK_SOURCE_PATH += lib_u2f
 endif
 
-WITH_LIBSOL=1
+WITH_LIBSOL?=1
 ifneq ($(WITH_LIBSOL),0)
     SOURCE_FILES += $(filter-out %_test.c,$(wildcard libsol/*.c))
     CFLAGS       += -Ilibsol/include

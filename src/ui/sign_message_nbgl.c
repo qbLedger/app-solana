@@ -113,7 +113,7 @@ void start_sign_tx_ui(size_t num_summary_steps) {
                        &C_icon_solana_64x64,
                        "Review transaction",
                        NULL,
-                       "Sign transaction on\nSolana network?",
+                       "Sign transaction on Solana network?",
                        review_choice);
 }
 
@@ -143,7 +143,7 @@ void start_sign_offchain_message_ui(bool is_ascii, size_t num_summary_steps) {
                        &C_icon_solana_64x64,
                        "Review off-chain\nmessage",
                        NULL,
-                       "Sign off-chain\nmessage on Solana\nnetwork?",
+                       "Sign off-chain message on Solana network?",
                        review_choice);
 }
 #endif
